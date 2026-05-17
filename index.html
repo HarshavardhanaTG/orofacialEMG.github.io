@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta name="description" content="Non-invasive electromyographic speech neuroprosthesis: a geometric perspective.">
+  <meta name="keywords" content="EMG, silent speech, neuromuscular interface, EMG-to-text, CTC, phonemes">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>emg2text</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css?v=6">
+
+  <link rel="icon" href="./static/images/brain.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <!-- Page-local styles for the transcription examples (ok to keep here) -->
+  <style>
+    .transcriptions .box { margin-bottom: 14px; }
+    .transcriptions .line { margin: 6px 0; }
+    .transcriptions .muted { opacity: 0.7; font-size: 0.95em; }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+                   "Liberation Mono", "Courier New", monospace;
+      font-size: 0.98rem;
+      line-height: 1.35;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .c-blue   { color: #1f4fff; }
+    .c-green  { color: #1b7a2e; }
+    .c-purple { color: #6a2cff; }
+    .c-orange { color: #c96a00; }
+    .c-gray   { color: #808080; }
+
+    .legend .tag { margin-right: 8px; margin-bottom: 6px; }
+    .tag-blue   { background: rgba(0, 102, 255, 0.12); color: #1f4fff; border: 1px solid rgba(0,102,255,0.25); }
+    .tag-green  { background: rgba(0, 160, 60, 0.12);  color: #1b7a2e; border: 1px solid rgba(0,160,60,0.25); }
+    .tag-purple { background: rgba(130, 60, 255, 0.12); color: #6a2cff; border: 1px solid rgba(130,60,255,0.25); }
+    .tag-orange { background: rgba(255, 140, 0, 0.12);  color: #c96a00; border: 1px solid rgba(255,140,0,0.25); }
+
+    .examples-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 900px) {
+      .examples-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarMain" class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">More Research</a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://HarshavardhanaTG.github.io/emg2speech.github.io/">emg2speech</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-1 publication-title">
+            Non-invasive electromyographic speech neuroprosthesis: a geometric perspective
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Harshavardhana T. Gowda<sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Lee M. Miller<sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of California, Davis</span>
+          </div>
+
+          <div class="publication-links" style="margin-top: 1rem;">
+
+            <span class="link-block">
+              <a href="./static/pdfs/emg2text.pdf"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
+              </a>
+            </span>
+
+            <span class="link-block">
+              <a href="https://github.com/MyoVerse/emg2text"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code</span>
+              </a>
+            </span>
+
+            <span class="link-block">
+                <a href="https://osf.io/bgh7t/files/box"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-database"></i>
+                  </span>
+                  <span>Data</span>
+                </a>
+              </span>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Abstract -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We present a neuromuscular speech interface that translates silently voiced
+            articulations directly into text. We record surface electromyographic (EMG) signals from multiple
+            articulatory sites on the face and neck as participants <em>silently</em> articulate speech, enabling
+            direct EMG-to-text translation. Such an interface has the potential to restore communication for
+            individuals who have lost the ability to produce intelligible speech due to laryngectomy,
+            neuromuscular disease, stroke, or trauma-induced damage (e.g., radiotherapy toxicity) to the speech
+            articulators. Prior work has largely focused on mapping EMG collected during <em>audible</em>
+            articulation to time-aligned audio targets or transferring these targets to <em>silent</em> EMG
+            recordings, which inherently requires audio and limits applicability to patients who can no longer
+            speak. In contrast, we propose an efficient representation of high-dimensional EMG signals and
+            demonstrate direct sequence-to-sequence EMG-to-text conversion at the phonemic level without relying
+            on time-aligned audio.
+          </p>
+        </div>
+
+        <p>
+          For direct EMG-to-speech conversion (i.e., EMG → audio), see
+          <a href="https://HarshavardhanaTG.github.io/emg2speech.github.io/" target="_blank" rel="noopener">our EMG-to-speech demo</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- emg2qwerty results -->
+<section class="section" id="emg2qwerty-results">
+  <div class="container is-max-desktop">
+    <div class="results-center">
+
+      <h2 class="title is-4">
+        Results on <span class="sc">emg2qwerty</span>
+      </h2>
+
+     <p class="content results-caption">
+    Comparison between our method and <span class="sc">emg2qwerty</span> baselines, averaged over 8 subjects.
+    Lower CER is better; the improvement is statistically significant (<em>p</em> &lt; 0.015).
+    LM denotes language model.<br><br>
+
+    Without a language model, our method achieves an 8.8% relative improvement in CER.
+    With a 6-gram character-level language model, the relative improvement increases to 16.8%.<br><br>
+
+    For reference, in a personalized fine-tuning paradigm, the <span class="sc">emg2qwerty</span> paper first trained a
+    generic model on data from 100 subjects, using nearly 100&times; more data, and then fine-tuned it on 8 individual subjects.
+    This achieved a CER of 11.29% without a language model and 6.95% with a 6-gram character-level LM.
+    The 6.95% result represents a strong performance ceiling enabled by large-scale pretraining.<br><br>
+
+    In contrast, our 7.95% CER is obtained using only per-subject training, with approximately 100&times; less data,
+    and is already close to this ceiling, highlighting the effectiveness of our approach. We achieve this by making a single, 
+    well-motivated change to the model architecture: by replacing EMG spectrograms with SPD matrix representations.
+  </p>
+
+      <div class="table-wrap">
+        <table class="simple-table">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>No LM (Val)</th>
+              <th>No LM (Test)</th>
+              <th>6-gram LM (Val)</th>
+              <th>6-gram LM (Test)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Baseline (spectrogram) — <span class="sc">emg2qwerty</span></td>
+              <td>15.65 ± 5.95</td>
+              <td>15.38 ± 5.88</td>
+              <td>11.03 ± 4.45</td>
+              <td>9.55 ± 5.16</td>
+            </tr>
+            <tr>
+              <td>Matrices σ(τ) (ours)</td>
+              <td><strong>14.33 ± 5.27</strong></td>
+              <td><strong>14.03 ± 5.27</strong></td>
+              <td><strong>9.61 ± 3.84</strong></td>
+              <td><strong>7.95 ± 4.54</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="results-figrow">
+        <figure class="results-fig">
+          <img src="./static/pdfs/testCER-NoLM.png" alt="Test CER without LM">
+        </figure>
+        <figure class="results-fig">
+          <img src="./static/pdfs/testCER-LM.png" alt="Test CER with 6-gram LM">
+        </figure>
+      </div>
+
+      <p class="content results-caption" style="margin-top: 0.75rem;">
+        Each dot represents an individual test subject; lines connect within-subject results across models.
+        Our method improves performance for all subjects except <span class="sc">user6</span>.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- Transcription examples -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Transcription examples</h2>
+
+    <div style="border: 1px solid #ddd; border-radius: 10px; overflow: hidden;">
+      <iframe
+        src="./static/pdfs/table.pdf#view=FitH"
+        width="100%"
+        height="900"
+        style="border: 0;"
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <p class="has-text-centered" style="margin-top: 10px;">
+      <a href="./static/pdfs/table.pdf" target="_blank" rel="noopener">Open PDF in a new tab</a>
+    </p>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Cite</h2>
+    Gowda, Harshavardhana T. and Lee M. Miller. 
+    <em>Non-invasive electromyographic speech neuroprosthesis: a geometric perspective.</em> 
+    Findings of the Association for Computational Linguistics: ACL 2026.
+    </code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="./static/pdfs/emg2text.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link external-link" href="https://github.com/MyoVerse/emg2text" aria-disabled="true">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p style="text-align: center;">
+            Website source code based on the <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a> website repo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Carousel init (safe even if no carousel exists on the page) -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof bulmaCarousel !== 'undefined') {
+    bulmaCarousel.attach('.results-carousel', {
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      autoplay: false,
+      navigation: true,
+      pagination: true,
+      loop: false,
+      infinite: true
+    });
+  }
+});
+</script>
+
+</body>
+</html>

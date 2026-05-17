@@ -1,0 +1,310 @@
+/* ============================
+   Base
+============================ */
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+/* ============================
+   Footer / Links
+============================ */
+
+.footer .icon-link {
+  font-size: 25px;
+  color: #000;
+}
+
+.link-block a {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* small-caps helpers */
+.dnerf { font-variant: small-caps; }
+.sc    { font-variant: small-caps; }
+
+/* ============================
+   Hero / Teaser
+============================ */
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+/* ============================
+   Publication Header
+============================ */
+
+.publication-title {
+  font-family: "Times New Roman", Times, "Nimbus Roman No9 L", "Liberation Serif", serif;
+}
+
+.publication-banner {
+  max-height: 100%; /* "parent" is not valid CSS */
+}
+
+/* If you use <video> inside .publication-banner */
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: contain; /* "fit" is not valid; contain is typical */
+}
+
+.publication-authors {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+  color: #555;
+  width: fit-content;
+  font-weight: bold;
+}
+
+.publication-awards {
+  color: #ff3860;
+  width: fit-content;
+  font-weight: bolder;
+}
+
+.publication-authors a {
+  color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+  text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+/* ============================
+   Embedded video blocks
+============================ */
+
+.publication-video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 10px !important;
+}
+
+.publication-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================
+   Results Carousel (Bulma Carousel)
+   NOTE: Nerfies template sometimes used image-only carousel styles
+   (e.g., font-size: 0). This file ensures text works inside slides.
+============================ */
+
+.results-carousel {
+  overflow: hidden;
+}
+
+/* Each slide container */
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 1rem !important; /* Ensure text renders (override image-only template) */
+}
+
+/* Box inside each slide */
+.results-carousel .item .box {
+  margin: 0;
+  border-radius: 10px;
+  padding: 14px 16px; /* spacing for text + media */
+}
+
+/* Video layout inside carousel */
+.results-carousel video {
+  margin: 0;
+  display: block;
+  width: 100%;
+}
+
+/* ============================
+   Demo section font (monospace)
+   Apply class="formal-serif" to the <section> (name kept for compatibility)
+============================ */
+
+section.formal-serif,
+section.formal-serif * {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+               "Liberation Mono", "Courier New", monospace !important;
+}
+
+/* ============================
+   Color helpers (strong + consistent)
+   Use these classes in HTML: c-blue/c-green/c-purple/c-orange
+============================ */
+
+.c-blue   { color: #1f4fff !important; }
+.c-green  { color: #1b7a2e !important; }
+.c-purple { color: #6a2cff !important; }
+.c-orange { color: #c96a00 !important; }
+
+/* Backward-compatible aliases if you used these already */
+.blue   { color: #1f4fff !important; }
+.green  { color: #1b7a2e !important; }
+.purple { color: #6a2cff !important; }
+.orange { color: #c96a00 !important; }
+
+/* ============================
+   Text formatting helpers
+============================ */
+
+/* Phoneme / code-like lines */
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+               "Liberation Mono", "Courier New", monospace !important;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  white-space: normal;       /* allow wrapping */
+  overflow-wrap: anywhere;   /* wrap long sequences */
+}
+
+/* Muted small text (e.g., timestamps) */
+.muted {
+  opacity: 0.7;
+  font-size: 0.95em;
+}
+
+/* ============================
+   Interpolation Panel (from Nerfies template)
+============================ */
+
+.interpolation-panel {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.interpolation-panel .interpolation-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+#interpolation-image-wrapper {
+  width: 100%;
+}
+
+#interpolation-image-wrapper img {
+  border-radius: 5px;
+}
+
+/* Center the whole emg2qwerty results block */
+#emg2qwerty-results .results-center{
+  max-width: 920px;          /* controls total block width */
+  margin: 0 auto;            /* centers the block */
+  text-align: center;        /* center headings + captions */
+}
+
+/* Center the table itself (and keep it neat) */
+#emg2qwerty-results .table-wrap{
+  display: flex;
+  justify-content: center;
+}
+
+#emg2qwerty-results .simple-table{
+  width: 100%;
+  max-width: 860px;          /* table width inside the centered block */
+  margin: 0 auto;
+}
+
+/* ============================
+   Simple tables: add grid lines
+============================ */
+
+.simple-table {
+  border-collapse: collapse;       /* key: makes single grid lines */
+  border-spacing: 0;
+  border: 1px solid #cfcfcf;       /* outer border */
+}
+
+.simple-table th,
+.simple-table td {
+  border: 1px solid #cfcfcf;       /* cell grid lines */
+  padding: 10px 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* left-align first column (optional, looks nicer for "Model") */
+.simple-table th:first-child,
+.simple-table td:first-child {
+  text-align: left;
+}
+
+/* header styling */
+.simple-table thead th {
+  background: #fafafa;
+  font-weight: 600;
+}
+
+
+/* Make the figure row a centered flex row */
+#emg2qwerty-results .results-figrow{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;           /* wraps on small screens */
+  margin-top: 12px;
+}
+
+/* Make images smaller */
+#emg2qwerty-results .results-fig{
+  margin: 0;
+}
+
+#emg2qwerty-results .results-fig img{
+  display: block;
+  width: 320px;              /* << smaller size */
+  max-width: 42vw;           /* responsive cap */
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Optional: keep the caption text nicely centered and constrained */
+#emg2qwerty-results .results-caption{
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Force grid lines for the emg2qwerty table (override Bulma) */
+#emg2qwerty-results table.simple-table {
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  border: 2px solid #bdbdbd !important;
+}
+
+#emg2qwerty-results table.simple-table th,
+#emg2qwerty-results table.simple-table td {
+  border: 2px solid #bdbdbd !important;
+  padding: 10px 12px !important;
+}
+
