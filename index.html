@@ -176,18 +176,18 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present a neuromuscular speech interface that translates silently voiced
-            articulations directly into text. We record surface electromyographic (EMG) signals from multiple
-            articulatory sites on the face and neck as participants <em>silently</em> articulate speech, enabling
-            direct EMG-to-text translation. Such an interface has the potential to restore communication for
-            individuals who have lost the ability to produce intelligible speech due to laryngectomy,
-            neuromuscular disease, stroke, or trauma-induced damage (e.g., radiotherapy toxicity) to the speech
-            articulators. Prior work has largely focused on mapping EMG collected during <em>audible</em>
-            articulation to time-aligned audio targets or transferring these targets to <em>silent</em> EMG
-            recordings, which inherently requires audio and limits applicability to patients who can no longer
-            speak. In contrast, we propose an efficient representation of high-dimensional EMG signals and
-            demonstrate direct sequence-to-sequence EMG-to-text conversion at the phonemic level without relying
-            on time-aligned audio.
+            In this work, we provide the first systematic investigation of the structure of orofacial EMG signals. 
+            We collect data from a large cohort of individuals as they perform orofacial movements and articulate English phonemes and words.
+
+            We show that the manifold of symmetric positive definite (SPD) matrices provides a natural embedding space for EMG signals. 
+            Within this space, EMG activity can be approximately represented as a linear combination of orthogonal basis vectors. 
+            We further show that distribution shift across individuals can be interpreted as a change of basis in this underlying EMG signal space.
+
+            Our results demonstrate that orofacial EMG signals can span the entire phonemic space of the English language, 
+            supporting their use as a rich neuromuscular representation for speech. We also introduce a general language-spelling interface based on NATO phonetic codes.
+
+            Together, these findings establish a foundational understanding of the data structure of orofacial EMG signals. 
+            This work serves as the basis for our subsequent studies demonstrating direct EMG-to-text and EMG-to-speech decoding, which are linked below.
           </p>
         </div>
         <p>
